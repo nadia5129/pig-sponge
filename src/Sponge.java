@@ -31,11 +31,48 @@ public class Sponge {
     assertEqual(6, spongeCase("e"), "e");
   }
 
-  // Implement your solution here!
-  public static String spongeCase(String sentence) {
-    return null;
-  }
+  // an array  = sentence.split("");
+  // empty string that stores the results that i will call on later
+  // for loop that loops thru the chars in word 
+  // if the char is % 2 == character.toUpperCase else to lowercase
+  // spongeCase(character) if (character.lowerCase) {  else{ character.upperCase} {return results =+ character}}
+  // returns the results.
 
+  // Implement your solution here!
+  // public static String spongeCase(String sentence) {
+  //   String [] word = sentence.split(" ");
+  //   String results = "";
+  //   boolean lower = true;
+
+  //   for( char character: sentence.toCharArray()){
+  //     if(lower){ results += Character.toLowerCase(character);}
+  //     else { 
+  //       results += Character.toUpperCase(character);
+  //     } lower = !lower;
+  //     }
+
+  //   return results;
+  // }
+public static String spongeCase(String sentence) {
+    String[] words = sentence.split(" ");
+    String result = "";
+
+    for (String word : words) {
+        boolean lower = true; 
+
+        for (char character : word.toCharArray()) {
+            if (lower) {
+                result += Character.toLowerCase(character);
+            } else {
+                result += Character.toUpperCase(character);
+            }
+            lower = !lower;
+        }
+        result += " "; 
+    }
+
+    return result.substring(0, result.length() - 1);
+}
 
   // Method to help with testing, you do not need to read this.
   public static void assertEqual(int testNumber, String actual, String expected) {
